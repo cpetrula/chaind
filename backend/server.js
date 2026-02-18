@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const mysql = require('mysql2');
@@ -12,6 +13,10 @@ const PORT = process.env.PORT || 3000;
 // Middleware
 app.use(cors());
 app.use(express.json());
+
+// Serve static files from frontend/dist
+const staticPath = path.join(__dirname, '../frontend/dist');
+app.use(express.static(staticPath));
 
 // MySQL connection configuration
 const dbConfig = {
@@ -36,8 +41,10 @@ pool.getConnection((err, connection) => {
 });
 
 // Routes
-app.get('/', (req, res) => {
-  res.json({ message: 'Welcome to Chaind API' });
+
+// Optionally, serve index.html for all non-API routes (SPA fallback)
+app.get(/^\/(?!api).*/, (req, res) => {
+  res.sendFile(path.join(staticPath, 'index.html'));
 });
 
 app.get('/api/health', (req, res) => {
