@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const cors = require('cors');
 const dotenv = require('dotenv');
-const mysql = require('mysql2');
+const mysql = require('mysql2/promise');
 
 // Load environment variables
 dotenv.config();
@@ -11,8 +11,14 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: process.env.CORS_ORIGIN || 'http://localhost:5173',
+  credentials: true
+}));
 app.use(express.json());
+
+// Serve uploaded files
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Serve static files from frontend/dist
 const staticPath = path.join(__dirname, '../frontend/dist');
@@ -23,45 +29,68 @@ const dbConfig = {
   host: process.env.DB_HOST || 'localhost',
   user: process.env.DB_USER || 'root',
   password: process.env.DB_PASSWORD || '',
-  database: process.env.DB_NAME || 'chaind_db'
+  database: process.env.DB_NAME || 'chaind_db',
+  waitForConnections: true,
+  connectionLimit: 10,
+  queueLimit: 0
 };
 
 // Create MySQL connection pool
 const pool = mysql.createPool(dbConfig);
 
 // Test database connection
-pool.getConnection((err, connection) => {
-  if (err) {
-    console.error('Error connecting to MySQL database:', err.message);
-    console.log('Server will continue but database operations will fail.');
-  } else {
-    console.log('Successfully connected to MySQL database');
+async function testConnection() {
+  try {
+    const connection = await pool.getConnection();
+    console.log('✅ Successfully connected to MySQL database');
     connection.release();
+  } catch (err) {
+    console.error('❌ Error connecting to MySQL database:', err.message);
+    console.log('Server will continue but database operations will fail.');
   }
-});
+}
+testConnection();
 
-// Routes
+// Make pool available to routes
+app.set('db', pool);
 
-// Optionally, serve index.html for all non-API routes (SPA fallback)
-app.get(/^\/(?!api).*/, (req, res) => {
-  res.sendFile(path.join(staticPath, 'index.html'));
-});
+// Import routes
+const authRoutes = require('./routes/auth');
+const galleryRoutes = require('./routes/gallery');
+const contactRoutes = require('./routes/contact');
+const bookingRoutes = require('./routes/booking');
+const adminRoutes = require('./routes/admin');
 
+// API Routes
+app.use('/api/auth', authRoutes);
+app.use('/api/gallery', galleryRoutes);
+app.use('/api/contact', contactRoutes);
+app.use('/api/bookings', bookingRoutes);
+app.use('/api/admin', adminRoutes);
+
+// Health check
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
 
-// Sample API endpoint that uses database
-app.get('/api/data', (req, res) => {
-  pool.query('SELECT 1 + 1 AS result', (error, results) => {
-    if (error) {
-      return res.status(500).json({ error: 'Database query failed', details: error.message });
-    }
-    res.json({ data: results, message: 'Sample data from database' });
+// SPA fallback - serve index.html for all non-API routes
+app.get(/^\/(?!api).*/, (req, res) => {
+  res.sendFile(path.join(staticPath, 'index.html'));
+});
+
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error('Server Error:', err);
+  res.status(err.status || 500).json({
+    error: err.message || 'Internal server error',
+    ...(process.env.NODE_ENV === 'development' && { stack: err.stack })
   });
 });
 
 // Start server
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+  console.log(`🚀 Server is running on port ${PORT}`);
+  console.log(`📁 Serving static files from: ${staticPath}`);
 });
+
+module.exports = app;

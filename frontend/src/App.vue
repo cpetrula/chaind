@@ -1,117 +1,142 @@
-<script setup>
-import { ref, onMounted } from 'vue'
-import Button from 'primevue/button'
-import Card from 'primevue/card'
-import Message from 'primevue/message'
-
-const apiStatus = ref('')
-const apiData = ref(null)
-const loading = ref(false)
-
-const checkAPI = async () => {
-  loading.value = true
-  try {
-    const response = await fetch('http://localhost:3000/api/health')
-    const data = await response.json()
-    apiStatus.value = 'success'
-    apiData.value = data
-  } catch (error) {
-    apiStatus.value = 'error'
-    apiData.value = { error: error.message }
-  } finally {
-    loading.value = false
-  }
-}
-
-onMounted(() => {
-  checkAPI()
-})
-</script>
-
 <template>
-  <div class="container">
-    <Card>
-      <template #title>
-        <div class="header">
-          <i class="pi pi-link" style="font-size: 2rem"></i>
-          <h1>Chaind</h1>
-        </div>
-      </template>
-      <template #subtitle>
-        Node.js + Vue.js + PrimeVue + Vite + MySQL
-      </template>
-      <template #content>
-        <div class="content">
-          <Message v-if="apiStatus === 'success'" severity="success">
-            Backend API is connected! Status: {{ apiData?.status }}
-          </Message>
-          <Message v-else-if="apiStatus === 'error'" severity="error">
-            Backend API connection failed. Make sure the backend server is running on port 3000.
-          </Message>
-          <Message v-else severity="info">
-            Checking backend connection...
-          </Message>
-          
-          <div class="tech-stack">
-            <h3>Technology Stack:</h3>
-            <ul>
-              <li><i class="pi pi-check-circle"></i> Node.js - Backend server</li>
-              <li><i class="pi pi-check-circle"></i> Vue.js - Frontend framework</li>
-              <li><i class="pi pi-check-circle"></i> PrimeVue - UI component library</li>
-              <li><i class="pi pi-check-circle"></i> Vite - Build tool</li>
-              <li><i class="pi pi-check-circle"></i> MySQL - Database</li>
-            </ul>
-          </div>
-          
-          <Button 
-            label="Refresh Connection" 
-            icon="pi pi-refresh" 
-            @click="checkAPI" 
-            :loading="loading"
-            severity="primary"
-          />
-        </div>
-      </template>
-    </Card>
+  <div id="app" :class="{ 'is-admin': isAdminRoute }">
+    <NavBar v-if="!isAdminRoute" />
+    <main class="main-content">
+      <router-view />
+    </main>
+    <Footer v-if="!isAdminRoute" />
   </div>
 </template>
 
-<style scoped>
-.container {
-  max-width: 800px;
-  margin: 2rem auto;
-  padding: 1rem;
-}
+<script setup>
+import { computed } from 'vue'
+import { useRoute } from 'vue-router'
+import NavBar from '@/components/layout/NavBar.vue'
+import Footer from '@/components/layout/Footer.vue'
 
-.header {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
+const route = useRoute()
 
-.header h1 {
+const isAdminRoute = computed(() => {
+  return route.path.startsWith('/admin')
+})
+</script>
+
+<style>
+/* Global Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
   margin: 0;
-}
-
-.content {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.tech-stack ul {
-  list-style: none;
   padding: 0;
 }
 
-.tech-stack li {
-  padding: 0.5rem 0;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
 }
 
-.tech-stack i {
-  color: #4caf50;
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  background-color: #000;
+  color: #fff;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+  padding-top: 80px; /* Account for fixed navbar */
+}
+
+#app.is-admin .main-content {
+  padding-top: 0;
+}
+
+a {
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button {
+  font-family: inherit;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #111;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* PrimeVue overrides for dark theme */
+.p-button {
+  font-family: inherit;
+}
+
+/* Global utility classes */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.section {
+  padding: 5rem 0;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.section-subtitle {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 3rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .section {
+    padding: 3rem 0;
+  }
+
+  .section-title {
+    font-size: 1.75rem;
+  }
+
+  .container {
+    padding: 0 1rem;
+  }
 }
 </style>
