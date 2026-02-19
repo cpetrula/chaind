@@ -10,10 +10,7 @@ router.post('/login', async (req, res) => {
     const { email, password } = req.body;
     const pool = req.app.get('db');
 
-    console.log('[AUTH DEBUG] Login attempt for email:', email);
-
     if (!email || !password) {
-      console.log('[AUTH DEBUG] Missing email or password');
       return res.status(400).json({ error: 'Email and password are required' });
     }
 
@@ -22,21 +19,14 @@ router.post('/login', async (req, res) => {
       [email]
     );
 
-    console.log('[AUTH DEBUG] Users found:', users.length);
-
     if (users.length === 0) {
-      console.log('[AUTH DEBUG] No user found with email:', email);
       return res.status(401).json({ error: 'Invalid credentials' });
     }
 
     const user = users[0];
-    console.log('[AUTH DEBUG] User found:', { id: user.id, email: user.email, hashLength: user.password_hash?.length });
-    
     const validPassword = await bcrypt.compare(password, user.password_hash);
-    console.log('[AUTH DEBUG] Password valid:', validPassword);
 
     if (!validPassword) {
-      console.log('[AUTH DEBUG] Password mismatch for user:', user.email);
       return res.status(401).json({ error: 'Invalid credentials' });
     }
 
