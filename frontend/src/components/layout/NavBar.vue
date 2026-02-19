@@ -97,6 +97,8 @@ const closeMenu = () => {
 .logo-image {
   height: 40px;
   width: auto;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
 }
 
 .navbar-menu {

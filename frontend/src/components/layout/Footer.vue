@@ -114,6 +114,8 @@ const currentYear = computed(() => new Date().getFullYear())
   height: 36px;
   width: auto;
   margin-bottom: 1rem;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
 }
 
 .footer-tagline {
