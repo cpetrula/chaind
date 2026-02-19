@@ -2,7 +2,7 @@
   <div class="admin-login">
     <div class="login-card">
       <div class="login-header">
-        <h1>CHAIND</h1>
+        <img src="@/assets/images/logo.svg" alt="Chaind" class="login-logo" />
         <p>Admin Portal</p>
       </div>
 
@@ -102,11 +102,10 @@ const handleLogin = async () => {
   margin-bottom: 2.5rem;
 }
 
-.login-header h1 {
-  font-size: 2rem;
-  font-weight: 300;
-  letter-spacing: 0.4em;
-  margin-bottom: 0.5rem;
+.login-logo {
+  height: 48px;
+  width: auto;
+  margin-bottom: 1rem;
 }
 
 .login-header p {

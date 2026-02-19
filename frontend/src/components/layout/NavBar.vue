@@ -3,7 +3,7 @@
     <div class="navbar-container">
       <!-- Logo -->
       <router-link to="/" class="navbar-logo">
-        <img src="@/assets/images/logo.png" alt="Chaind - Permanent Jewelry" class="logo-image" />
+        <img src="@/assets/images/logo.svg" alt="Chaind - Permanent Jewelry" class="logo-image" />
       </router-link>
 
       <!-- Desktop Navigation -->
@@ -97,8 +97,6 @@ const closeMenu = () => {
 .logo-image {
   height: 40px;
   width: auto;
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: crisp-edges;
 }
 
 .navbar-menu {
