@@ -3,7 +3,7 @@
     <div class="navbar-container">
       <!-- Logo -->
       <router-link to="/" class="navbar-logo">
-        <span class="logo-text">CHAIND</span>
+        <img src="@/assets/images/logo.png" alt="Chaind - Permanent Jewelry" class="logo-image" />
       </router-link>
 
       <!-- Desktop Navigation -->
@@ -94,11 +94,9 @@ const closeMenu = () => {
   text-decoration: none;
 }
 
-.logo-text {
-  font-size: 1.75rem;
-  font-weight: 300;
-  letter-spacing: 0.4em;
-  color: #fff;
+.logo-image {
+  height: 40px;
+  width: auto;
 }
 
 .navbar-menu {

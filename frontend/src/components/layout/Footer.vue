@@ -5,7 +5,7 @@
       <div class="footer-grid">
         <!-- Brand -->
         <div class="footer-brand">
-          <h3 class="footer-logo">CHAIND</h3>
+          <img src="@/assets/images/logo.png" alt="Chaind" class="footer-logo-img" />
           <p class="footer-tagline">
             Creating lasting connections through permanent jewelry.
             One link at a time.
@@ -110,11 +110,9 @@ const currentYear = computed(() => new Date().getFullYear())
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.footer-logo {
-  font-size: 1.5rem;
-  font-weight: 300;
-  letter-spacing: 0.4em;
-  color: #fff;
+.footer-logo-img {
+  height: 36px;
+  width: auto;
   margin-bottom: 1rem;
 }
 
