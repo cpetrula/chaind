@@ -176,18 +176,18 @@ onMounted(() => {
 
 .empty-state i {
   font-size: 4rem;
-  color: var(--text-color-secondary);
+  color: #9ca3af;
   margin-bottom: 1rem;
 }
 
 .empty-state h3 {
   font-size: 1.5rem;
   margin: 1rem 0 0.5rem;
-  color: var(--text-color);
+  color: #1a1a1a;
 }
 
 .empty-state p {
-  color: var(--text-color-secondary);
+  color: #6b7280;
 }
 
 /* Events List */
@@ -215,7 +215,7 @@ onMounted(() => {
 
 .event-image {
   width: 100%;
-  height: 250px;
+  height: 100%;
   overflow: hidden;
   background: var(--surface-100);
 }
@@ -281,7 +281,7 @@ onMounted(() => {
   font-size: 1.75rem;
   font-weight: 700;
   margin: 0;
-  color: var(--text-color);
+  color: #1a1a1a;
 }
 
 .event-meta {
@@ -294,7 +294,7 @@ onMounted(() => {
   display: flex;
   align-items: flex-start;
   gap: 0.75rem;
-  color: var(--text-color-secondary);
+  color: #4a5568;
   font-size: 1rem;
 }
 
@@ -304,7 +304,7 @@ onMounted(() => {
 }
 
 .event-description {
-  color: var(--text-color-secondary);
+  color: #4a5568;
   line-height: 1.6;
   margin: 0;
 }
@@ -344,7 +344,7 @@ onMounted(() => {
   }
 
   .event-image {
-    height: 200px;
+    height: 250px;
   }
 
   .event-content {
