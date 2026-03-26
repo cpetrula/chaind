@@ -48,15 +48,11 @@
           <ul>
             <li>
               <i class="pi pi-envelope"></i>
-              <a href="mailto:hello@chaind.com">hello@chaind.com</a>
-            </li>
-            <li>
-              <i class="pi pi-phone"></i>
-              <a href="tel:+15551234567">(555) 123-4567</a>
+              <a href="mailto:info@chaindca.com">info@chaindca.com</a>
             </li>
             <li>
               <i class="pi pi-map-marker"></i>
-              <span>Los Angeles, CA</span>
+              <span>Los Angeles & Ventura County</span>
             </li>
           </ul>
           <router-link to="/book" class="footer-cta">

@@ -47,7 +47,7 @@
                   <InputText 
                     id="phone" 
                     v-model="form.phone" 
-                    placeholder="(555) 123-4567"
+                    placeholder="Your phone number (optional)"
                   />
                 </div>
               </div>
@@ -103,21 +103,14 @@
                   <i class="pi pi-envelope"></i>
                   <div>
                     <span>Email</span>
-                    <a href="mailto:hello@chaind.com">hello@chaind.com</a>
-                  </div>
-                </li>
-                <li>
-                  <i class="pi pi-phone"></i>
-                  <div>
-                    <span>Phone</span>
-                    <a href="tel:+15551234567">(555) 123-4567</a>
+                    <a href="mailto:info@chaindca.com">info@chaindca.com</a>
                   </div>
                 </li>
                 <li>
                   <i class="pi pi-map-marker"></i>
                   <div>
                     <span>Location</span>
-                    <p>Los Angeles, CA<br/>Mobile service throughout LA County</p>
+                    <p>Los Angeles & Ventura County<br/>Mobile service throughout both counties</p>
                   </div>
                 </li>
                 <li>

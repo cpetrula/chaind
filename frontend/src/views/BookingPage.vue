@@ -51,7 +51,7 @@
                     <InputText 
                       id="phone" 
                       v-model="form.phone" 
-                      placeholder="(555) 123-4567"
+                      placeholder="Your phone number"
                       :class="{ 'p-invalid': errors.phone }"
                     />
                     <small v-if="errors.phone" class="error-text">{{ errors.phone }}</small>

@@ -38,7 +38,7 @@
             <router-link to="/contact" class="btn btn-primary">
               Contact Us
             </router-link>
-            <a href="mailto:hello@chaind.com" class="btn btn-secondary">
+            <a href="mailto:info@chaindca.com" class="btn btn-secondary">
               <i class="pi pi-envelope"></i>
               Email Us
             </a>
