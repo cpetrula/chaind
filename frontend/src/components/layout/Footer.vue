@@ -198,7 +198,7 @@ const currentYear = computed(() => new Date().getFullYear())
   margin-top: 1rem;
   padding: 0.75rem 1.5rem;
   background: #fff;
-  color: #000;
+  color: #000 !important;
   text-decoration: none;
   font-size: 0.75rem;
   font-weight: 600;
@@ -209,6 +209,7 @@ const currentYear = computed(() => new Date().getFullYear())
 
 .footer-cta:hover {
   background: #c0c0c0;
+  color: #000 !important;
 }
 
 .footer-bottom {
