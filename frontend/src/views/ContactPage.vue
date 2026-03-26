@@ -134,14 +134,11 @@
               <h3>Follow Us</h3>
               <p>Stay updated on our latest events and pop-ups</p>
               <div class="social-links">
-                <a href="#" class="social-link" aria-label="Instagram">
+                <a href="https://Instagram.com/#chaindca" class="social-link" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
                   <i class="pi pi-instagram"></i>
                 </a>
-                <a href="#" class="social-link" aria-label="TikTok">
+                <a href="https://www.tiktok.com/@chaindca" class="social-link" aria-label="TikTok" target="_blank" rel="noopener noreferrer">
                   <i class="pi pi-play"></i>
-                </a>
-                <a href="#" class="social-link" aria-label="Pinterest">
-                  <i class="pi pi-pinterest"></i>
                 </a>
               </div>
             </div>

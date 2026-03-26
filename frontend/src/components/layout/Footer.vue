@@ -11,14 +11,11 @@
             One link at a time.
           </p>
           <div class="footer-social">
-            <a href="#" class="social-link" aria-label="Instagram" title="Instagram">
+            <a href="https://Instagram.com/#chaindca" class="social-link" aria-label="Instagram" title="Instagram" target="_blank" rel="noopener noreferrer">
               <i class="pi pi-instagram"></i>
             </a>
-            <a href="#" class="social-link" aria-label="TikTok" title="TikTok">
+            <a href="https://www.tiktok.com/@chaindca" class="social-link" aria-label="TikTok" title="TikTok" target="_blank" rel="noopener noreferrer">
               <i class="pi pi-play"></i>
-            </a>
-            <a href="#" class="social-link" aria-label="Pinterest" title="Pinterest">
-              <i class="pi pi-pinterest"></i>
             </a>
           </div>
         </div>
