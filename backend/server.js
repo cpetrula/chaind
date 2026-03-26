@@ -59,6 +59,7 @@ const authRoutes = require('./routes/auth');
 const galleryRoutes = require('./routes/gallery');
 const contactRoutes = require('./routes/contact');
 const bookingRoutes = require('./routes/booking');
+const eventsRoutes = require('./routes/events');
 const adminRoutes = require('./routes/admin');
 
 // API Routes
@@ -66,6 +67,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/gallery', galleryRoutes);
 app.use('/api/contact', contactRoutes);
 app.use('/api/bookings', bookingRoutes);
+app.use('/api/events', eventsRoutes);
 app.use('/api/admin', adminRoutes);
 
 // Health check

@@ -8,11 +8,13 @@ import ServicesPage from '@/views/ServicesPage.vue'
 import FaqPage from '@/views/FaqPage.vue'
 import ContactPage from '@/views/ContactPage.vue'
 import BookingPage from '@/views/BookingPage.vue'
+import EventsPage from '@/views/EventsPage.vue'
 
 // Admin pages
 import AdminLogin from '@/views/admin/AdminLogin.vue'
 import AdminDashboard from '@/views/admin/AdminDashboard.vue'
 import AdminGallery from '@/views/admin/AdminGallery.vue'
+import AdminEvents from '@/views/admin/AdminEvents.vue'
 import AdminContacts from '@/views/admin/AdminContacts.vue'
 import AdminBookings from '@/views/admin/AdminBookings.vue'
 
@@ -60,6 +62,12 @@ const routes = [
     component: BookingPage,
     meta: { title: 'Book an Event | CHAIND' }
   },
+  {
+    path: '/events',
+    name: 'events',
+    component: EventsPage,
+    meta: { title: 'Events Calendar | CHAIND' }
+  },
 
   // Admin routes
   {
@@ -79,6 +87,12 @@ const routes = [
     name: 'admin-gallery',
     component: AdminGallery,
     meta: { title: 'Gallery Management | CHAIND Admin', requiresAuth: true }
+  },
+  {
+    path: '/admin/events',
+    name: 'admin-events',
+    component: AdminEvents,
+    meta: { title: 'Events Management | CHAIND Admin', requiresAuth: true }
   },
   {
     path: '/admin/contacts',

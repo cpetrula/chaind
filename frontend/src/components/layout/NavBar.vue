@@ -53,6 +53,7 @@ const navLinks = [
   { to: '/', label: 'Home' },
   { to: '/about', label: 'About' },
   { to: '/gallery', label: 'Gallery' },
+  { to: '/events', label: 'Events' },
   { to: '/services', label: 'Services' },
   { to: '/faq', label: 'FAQ' },
   { to: '/contact', label: 'Contact' }

@@ -16,13 +16,17 @@
           <i class="pi pi-images"></i>
           <span>Gallery</span>
         </router-link>
+        <router-link to="/admin/events" class="nav-item" active-class="active">
+          <i class="pi pi-calendar"></i>
+          <span>Events</span>
+        </router-link>
         <router-link to="/admin/contacts" class="nav-item" active-class="active">
           <i class="pi pi-envelope"></i>
           <span>Contacts</span>
           <span v-if="stats.newContacts" class="badge">{{ stats.newContacts }}</span>
         </router-link>
         <router-link to="/admin/bookings" class="nav-item" active-class="active">
-          <i class="pi pi-calendar"></i>
+          <i class="pi pi-calendar-plus"></i>
           <span>Bookings</span>
           <span v-if="stats.newBookings" class="badge">{{ stats.newBookings }}</span>
         </router-link>

@@ -8,8 +8,9 @@
       <nav class="sidebar-nav">
         <router-link to="/admin" class="nav-item"><i class="pi pi-home"></i><span>Dashboard</span></router-link>
         <router-link to="/admin/gallery" class="nav-item"><i class="pi pi-images"></i><span>Gallery</span></router-link>
+        <router-link to="/admin/events" class="nav-item"><i class="pi pi-calendar"></i><span>Events</span></router-link>
         <router-link to="/admin/contacts" class="nav-item"><i class="pi pi-envelope"></i><span>Contacts</span></router-link>
-        <router-link to="/admin/bookings" class="nav-item active"><i class="pi pi-calendar"></i><span>Bookings</span></router-link>
+        <router-link to="/admin/bookings" class="nav-item active"><i class="pi pi-calendar-plus"></i><span>Bookings</span></router-link>
       </nav>
       <div class="sidebar-footer">
         <button @click="logout" class="logout-btn"><i class="pi pi-sign-out"></i> Logout</button>
