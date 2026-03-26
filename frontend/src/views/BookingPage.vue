@@ -308,7 +308,6 @@ const budgetRanges = [
 
 const referralSources = [
   'Instagram',
-  'Facebook',
   'TikTok',
   'Google Search',
   'Friend/Family',

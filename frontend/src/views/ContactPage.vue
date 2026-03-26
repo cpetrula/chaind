@@ -137,9 +137,6 @@
                 <a href="#" class="social-link" aria-label="Instagram">
                   <i class="pi pi-instagram"></i>
                 </a>
-                <a href="#" class="social-link" aria-label="Facebook">
-                  <i class="pi pi-facebook"></i>
-                </a>
                 <a href="#" class="social-link" aria-label="TikTok">
                   <i class="pi pi-play"></i>
                 </a>
